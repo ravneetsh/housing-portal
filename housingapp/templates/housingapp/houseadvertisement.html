@@ -24,9 +24,9 @@
     <div class="center-div">
         <h1>
             {% if id %}
-                Edit Loan Application
+                Edit Advertisement
             {% else %}
-                Fill New Loan Application
+                Add Advertisement
             {% endif %}
         </h1>
         <div class="left-manner-div">
@@ -53,20 +53,24 @@
                 {% endif %} 
                 <table class="table">
                     <tr>
-                        <td>Loan Amount</td>
-                        <td>{{ form.amount }}</td>
+                        <td>Number of Bedroom</td>
+                        <td>{{ form.number_of_bedroom }}</td>
                     </tr>
                     <tr>
-                        <td>Loan Tenure</td>
-                        <td>{{ form.tenure }}</td>
+                        <td>Number of Bathroom</td>
+                        <td>{{ form.number_of_bathroom }}</td>
                     </tr>
                     <tr>
-                        <td>Loan Purpose</td>
-                        <td>{{ form.purpose }}</td>
+                        <td>Nearest Landmark</td>
+                        <td>{{ form.nearest_landmark }}</td>
                     </tr>
                     <tr>
-                        <td>Loan Type</td>
-                        <td>{{ form.loan_type }}</td>
+                        <td>City</td>
+                        <td>{{ form.city }}</td>
+                    </tr>
+                    <tr>
+                        <td>Advertisement Visibility Status</td>
+                        <td>{{ form.advertisement_visibility }}</td>
                     </tr>
                     <tr>
                         <td colspan='2' style='text-align: center;'>
