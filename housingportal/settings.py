@@ -25,12 +25,15 @@ SECRET_KEY = 't#08)l#&@g7h_2fsr2!-cho334gwh#cpdlx(#gxa1b*$u(v)5s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['3be0c8856a484ecc9ccdf93c1c3f36e3.vfs.cloud9.eu-west-1.amazonaws.com']
 
+LOGIN_REDIRECT_URL = '/'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
+    'housingapp.apps.HousingappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

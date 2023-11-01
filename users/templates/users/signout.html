@@ -1,0 +1,22 @@
+{% extends "housingapp/base_generic.html" %}
+{% block content %}
+    <style type="text/css">
+        .full-center-div {
+          height: 70vh;
+          text-align: center;
+          padding-top: 2%;
+        }
+        
+        .left-manner-div {
+          margin: 0 auto;
+          width: 20%;
+          text-align: left;
+        }
+    </style>
+    <div class="full-center-div">
+        <div>You have been signed out.<div>
+        <div>
+            <a href="{% url 'sign_in' %}">Sign In</a>
+        <div>
+    </div>
+{% endblock content %}

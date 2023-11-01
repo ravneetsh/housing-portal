@@ -1,0 +1,39 @@
+{% extends "housingapp/base_generic.html" %}
+{% block content %}
+    <style type="text/css">
+        .center-div {
+          text-align: center;
+          padding-top: 2%;
+        }
+        
+        .left-manner-div {
+          margin: 0 auto;
+          width: 20%;
+          text-align: left;
+        }
+        .table th{
+            text-align: left;
+            padding-left: 4%;
+        }
+        .table td{
+            padding-left: 1%;
+            padding-top: 1%;
+            text-align: left;
+        }
+    </style>
+    <div class="center-div">
+        <form method="POST">
+            {% csrf_token %}
+            <table class="table">
+                {{ form.as_table }}
+            </table>
+            <div>
+                <button type="submit">Sign Up</button>
+            </div>
+            <p></p>
+            <div>
+                If you have an account <a href="{% url 'sign_in' %}">Sign In</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "housingapp/base_generic.html" %}
+{% block content %}
+    <style type="text/css">
+        .full-center-div {
+          height: 70vh;
+          text-align: center;
+          padding-top: 2%;
+        }
+        
+        .left-manner-div {
+          margin-left: 40%;
+          width: 40%;
+          text-align: left;
+        }
+    </style>
+    <div class="full-center-div">
+        Welcome to Housing Search Portal
+        <br>
+        <br>
+        {% if user.is_authenticated %}
+            <div> 
+            </div>
+        {% else %}
+            <div class="left-manner-div">
+                Existing Users - <a href="{% url 'sign_in' %}">Sign In</a> to continue
+                <br>
+                New Users -<a href="{% url 'users:sign_up' %}">Sign up</a>
+            </div>
+        {% endif %}        
+        
+    </div>
+{% endblock content %}
