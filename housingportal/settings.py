@@ -25,7 +25,8 @@ SECRET_KEY = 't#08)l#&@g7h_2fsr2!-cho334gwh#cpdlx(#gxa1b*$u(v)5s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3be0c8856a484ecc9ccdf93c1c3f36e3.vfs.cloud9.eu-west-1.amazonaws.com']
+ALLOWED_HOSTS = ['3be0c8856a484ecc9ccdf93c1c3f36e3.vfs.cloud9.eu-west-1.amazonaws.com',
+                    'x23113961-cdos3-env2.eba-2pcib3iw.ap-northeast-2.elasticbeanstalk.com']
 
 LOGIN_REDIRECT_URL = '/'
 
