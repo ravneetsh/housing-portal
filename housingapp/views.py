@@ -48,7 +48,7 @@ def houseadvertisement_existing(request, houseadvertisement_id):
             
 # Get list of all houseadvertisements
 def houseadvertisements(request):
-    houseadvertisements = HouseAdvertisement.objects.order_by('-id')[:]
+    houseadvertisements = HouseAdvertisement.objects.filter(advertisement_visibility=1).order_by('-id')[:]
     context = {'houseadvertisements': houseadvertisements}
     return render(request, 'housingapp/houseadvertisements.html', context)
     
@@ -61,3 +61,12 @@ def houseadvertisement_delete(request, houseadvertisement_id):
     messages.success(request, 'House Advertisement Id - ' + str(houseadvertisement_id) + ' deleted successfully.')
     HouseAdvertisement.objects.filter(id=houseadvertisement_id).delete()
     return render(request, 'housingapp/messages.html', {})
+    
+def houseadvertisement_view(request, houseadvertisement_id):
+    try:
+        houseadvertisement = HouseAdvertisement.objects.get(pk=houseadvertisement_id)
+        form = HouseAdvertisementForm(instance=houseadvertisement)
+    except HouseAdvertisement.DoesNotExist:
+        raise Http404("House Advertisement does not exist")
+    context = {'form': form, 'id': houseadvertisement_id, 'view': True}
+    return render(request, 'housingapp/houseadvertisement.html', context)

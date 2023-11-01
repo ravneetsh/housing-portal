@@ -8,7 +8,7 @@
         
         .left-manner-div {
           margin: 0 auto;
-          width: 60%;
+          width: 50%;
           text-align: left;
         }
         .table th{
@@ -23,10 +23,14 @@
     </style>
     <div class="center-div">
         <h1>
-            {% if id %}
-                Edit Advertisement
+            {% if not view %}
+                {% if id %}
+                    Edit Advertisement
+                {% else %}
+                    Add Advertisement
+                {% endif %}
             {% else %}
-                Add Advertisement
+                Advertisement
             {% endif %}
         </h1>
         <div class="left-manner-div">
@@ -52,39 +56,65 @@
                     <input type="hidden" name="id" id="id" value="{{ id }}" />
                 {% endif %} 
                 <table class="table">
-                    <tr>
-                        <td>Number of Bedroom</td>
-                        <td>{{ form.number_of_bedroom }}</td>
-                    </tr>
-                    <tr>
-                        <td>Number of Bathroom</td>
-                        <td>{{ form.number_of_bathroom }}</td>
-                    </tr>
-                    <tr>
-                        <td>Floor Number</td>
-                        <td>{{ form.floor_number }}</td>
-                    </tr>
-                    <tr>
-                        <td>Nearest Landmark</td>
-                        <td>{{ form.nearest_landmark }}</td>
-                    </tr>
-                    <tr>
-                        <td>City</td>
-                        <td>{{ form.city }}</td>
-                    </tr>
-                    <tr>
-                        <td>Advertisement Visibility Status</td>
-                        <td>{{ form.advertisement_visibility }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan='2' style='text-align: center;'>
-                            {% if id %}
-                                <input type="submit" value="Update">
-                            {% else %}
-                                <input type="submit" value="Save">
-                            {% endif %}                  
-                        </td>
-                    </tr>
+                    {% if not view %}
+                        <tr>
+                            <td>Number of Bedroom</td>
+                            <td>{{ form.number_of_bedroom }}</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Bathroom</td>
+                            <td>{{ form.number_of_bathroom }}</td>
+                        </tr>
+                        <tr>
+                            <td>Floor Number</td>
+                            <td>{{ form.floor_number }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nearest Landmark</td>
+                            <td>{{ form.nearest_landmark }}</td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td>{{ form.city }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td>Number of Bedroom</td>
+                            <td>{{ form.number_of_bedroom.value }}</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Bathroom</td>
+                            <td>{{ form.number_of_bathroom.value }}</td>
+                        </tr>
+                        <tr>
+                            <td>Floor Number</td>
+                            <td>{{ form.floor_number.value }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nearest Landmark</td>
+                            <td>{{ form.nearest_landmark.value }}</td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td class="frooze">{{ form.city }}</td>
+                        </tr>
+                    {% endif %}
+                    
+                    {% if not view %}
+                        <tr>
+                            <td>Advertisement Visibility Status</td>
+                            <td>{{ form.advertisement_visibility }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan='2' style='text-align: center;'>
+                                {% if id %}
+                                    <input type="submit" value="Update">
+                                {% else %}
+                                    <input type="submit" value="Save">
+                                {% endif %}                  
+                            </td>
+                        </tr>
+                    {% endif %}
                 </table>
             </form>
         </div>

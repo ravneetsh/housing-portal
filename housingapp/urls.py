@@ -8,5 +8,6 @@ urlpatterns = [
     path('myhouseadvertisements', views.myhouseadvertisements, name='myhouseadvertisements'),
     path('houseadvertisement', views.houseadvertisement, name='houseadvertisement_create'),
     path('houseadvertisement/<int:houseadvertisement_id>', views.houseadvertisement_existing, name='houseadvertisement_existing'),
-    path('houseadvertisement/delete/<int:houseadvertisement_id>', views.houseadvertisement_delete, name='houseadvertisement_delete')
+    path('houseadvertisement/delete/<int:houseadvertisement_id>', views.houseadvertisement_delete, name='houseadvertisement_delete'),
+    path('houseadvertisement/view/<int:houseadvertisement_id>', views.houseadvertisement_view, name='houseadvertisement_view')
 ]

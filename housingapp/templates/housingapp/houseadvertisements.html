@@ -9,7 +9,6 @@
         .left-manner-div {
           margin: 0 auto;
           width: 70%;
-          text-align: left;
         }
         .table th{
             text-align: center;
@@ -58,7 +57,7 @@
                                 &nbsp;|&nbsp;
                                 <a href="{% url 'housingapp:houseadvertisement_delete' houseadvertisement.id %}">Delete</a>
                             {% else %}
-                                <a href="{% url 'housingapp:houseadvertisement_existing' houseadvertisement.id %}">View</a>
+                                <a href="{% url 'housingapp:houseadvertisement_view' houseadvertisement.id %}">View</a>
                             {% endif %}
                         </td>
                     </tr>
