@@ -22,10 +22,10 @@
         }
     </style>
     <div class="center-div">
-        {% if are_my_applications %}
-            <h3>My Applications</h3>
+        {% if are_my_houseadvertisements %}
+            <h3>My Advertisements</h3>
         {% else %}
-            <h3>Loan Applications</h3>
+            <h3>Advertisements</h3>
         {% endif %}
         {% if messages %}
         <ul class="messages">
@@ -35,27 +35,33 @@
         </ul>
         {% endif %}
         <div class="left-manner-div">
-            {% if applications %}
+            {% if houseadvertisements %}
                 <table class="table">
                     <tr>
-                        <th>Loan Application Id</th>
-                        <th>Loan Amount</th>
+                        <th>Advertisement Id</th>
+                        <th>Number of Bedrooms</th>
+                        <th>Number of Bathrooms</th>
+                        <th>Floor Number</th>
+                        <th>City</th>
                         <th>Action</th>
                     </tr>
-                {% for application in applications %}
+                {% for houseadvertisement in houseadvertisements %}
                     <tr>
-                        <td>{{ application.id }}</td>
-                        <td>{{ application.amount }}</td>
+                        <td>{{ houseadvertisement.id }}</td>
+                        <td>{{ houseadvertisement.number_of_bedroom }}</td>
+                        <td>{{ houseadvertisement.number_of_bathroom }}</td>
+                        <td>{{ houseadvertisement.floor_number }}</td>
+                        <td>{{ houseadvertisement.city }}</td>
                         <td>
-                            <a href="{% url 'loanapp:application_existing' application.id %}">View</a>
+                            <a href="{% url 'housingapp:houseadvertisement_existing' houseadvertisement.id %}">View</a>
                             &nbsp;|&nbsp;
-                            <a href="{% url 'loanapp:application_existing' application.id %}">Edit</a>
+                            <a href="{% url 'housingapp:houseadvertisement_existing' houseadvertisement.id %}">Edit</a>
                         </td>
                     </tr>
                 {% endfor %}
                 </table>
             {% else %}
-                <p>There are no applications.</p>
+                <p>There are no advertisements.</p>
             {% endif %}
         </div>
     </div>
