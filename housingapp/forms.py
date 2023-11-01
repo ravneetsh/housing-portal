@@ -9,5 +9,5 @@ class HouseAdvertisementForm(ModelForm):
         exclude = ["user"]
         
         widgets = {
-            'nearest_landmark': forms.Textarea()
+            'nearby_utilities_landmarks': forms.Textarea()
             }

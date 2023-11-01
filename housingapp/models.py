@@ -18,7 +18,7 @@ class HouseAdvertisement(models.Model):
     number_of_bedroom = models.IntegerField()
     number_of_bathroom = models.IntegerField()
     floor_number = models.IntegerField()
-    nearest_landmark = models.CharField(max_length=100)
+    nearby_utilities_landmarks = models.CharField(max_length=500)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     city = models.ForeignKey(City,on_delete=models.CASCADE)
     advertisement_visibility = models.IntegerField(choices=advertisement_visibility)
