@@ -54,9 +54,9 @@
                 </button>
                 <div id="navcol-1" class="collapse navbar-collapse">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link active" href="">Add Rental House</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="">My Rental Houses</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="">Rental Houses</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{% url 'housingapp:houseadvertisement_create' %}">Add Rental House</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{% url 'housingapp:myhouseadvertisements' %}">My Rental Houses</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{% url 'housingapp:houseadvertisements' %}">Rental Houses</a></li>
                     </ul>
                 </div>
             </div>

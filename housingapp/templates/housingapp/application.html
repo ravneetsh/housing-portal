@@ -1,0 +1,84 @@
+{% extends "housingapp/base_generic.html" %}
+{% block content %}
+    <style type="text/css">
+        .center-div {
+          text-align: center;
+          padding-top: 2%;
+        }
+        
+        .left-manner-div {
+          margin: 0 auto;
+          width: 60%;
+          text-align: left;
+        }
+        .table th{
+            text-align: left;
+            padding-left: 4%;
+        }
+        .table td{
+            padding-left: 1%;
+            padding-top: 1%;
+            text-align: left;
+        }
+    </style>
+    <div class="center-div">
+        <h1>
+            {% if id %}
+                Edit Loan Application
+            {% else %}
+                Fill New Loan Application
+            {% endif %}
+        </h1>
+        <div class="left-manner-div">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% if form.errors %}
+               {% for field in form %}
+                   {% for error in field.errors %} 
+                      <div class="alert alert-danger">
+                           <strong>{{ field }} {{ error|escape }}</strong>
+                      </div>
+                   {% endfor %}
+               {% endfor %}
+            {% endif %}
+            <form action='' method='post'>
+                {% csrf_token %}
+                {% if id %}
+                    <input type="hidden" name="id" id="id" value="{{ id }}" />
+                {% endif %} 
+                <table class="table">
+                    <tr>
+                        <td>Loan Amount</td>
+                        <td>{{ form.amount }}</td>
+                    </tr>
+                    <tr>
+                        <td>Loan Tenure</td>
+                        <td>{{ form.tenure }}</td>
+                    </tr>
+                    <tr>
+                        <td>Loan Purpose</td>
+                        <td>{{ form.purpose }}</td>
+                    </tr>
+                    <tr>
+                        <td>Loan Type</td>
+                        <td>{{ form.loan_type }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan='2' style='text-align: center;'>
+                            {% if id %}
+                                <input type="submit" value="Update">
+                            {% else %}
+                                <input type="submit" value="Save">
+                            {% endif %}                  
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

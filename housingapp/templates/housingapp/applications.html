@@ -1,0 +1,62 @@
+{% extends "housingapp/base_generic.html" %}
+{% block content %}
+    <style type="text/css">
+        .center-div {
+          text-align: center;
+          padding-top: 2%;
+        }
+        
+        .left-manner-div {
+          margin: 0 auto;
+          width: 60%;
+          text-align: left;
+        }
+        .table th{
+            text-align: center;
+            padding-left: 4%;
+        }
+        .table td{
+            padding-left: 1%;
+            padding-top: 1%;
+            text-align: center;
+        }
+    </style>
+    <div class="center-div">
+        {% if are_my_applications %}
+            <h3>My Applications</h3>
+        {% else %}
+            <h3>Loan Applications</h3>
+        {% endif %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="left-manner-div">
+            {% if applications %}
+                <table class="table">
+                    <tr>
+                        <th>Loan Application Id</th>
+                        <th>Loan Amount</th>
+                        <th>Action</th>
+                    </tr>
+                {% for application in applications %}
+                    <tr>
+                        <td>{{ application.id }}</td>
+                        <td>{{ application.amount }}</td>
+                        <td>
+                            <a href="{% url 'loanapp:application_existing' application.id %}">View</a>
+                            &nbsp;|&nbsp;
+                            <a href="{% url 'loanapp:application_existing' application.id %}">Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% else %}
+                <p>There are no applications.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}
