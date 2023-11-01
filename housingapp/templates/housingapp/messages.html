@@ -1,0 +1,25 @@
+{% extends "housingapp/base_generic.html" %}
+{% block content %}
+    <style type="text/css">
+        .full-center-div {
+          height: 70vh;
+          text-align: center;
+          padding-top: 2%;
+        }
+        
+        .left-manner-div {
+          margin-left: 40%;
+          width: 40%;
+          text-align: left;
+        }
+    </style>
+    <div class="full-center-div">
+        <div class="left-manner-div">
+            <ul class="messages">
+                {% for message in messages %}
+                <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

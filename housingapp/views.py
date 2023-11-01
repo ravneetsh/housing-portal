@@ -4,6 +4,7 @@ from .models import HouseAdvertisement
 from .forms import HouseAdvertisementForm
 from django.contrib import messages
 from django.http import Http404
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def index(request):
@@ -55,3 +56,8 @@ def myhouseadvertisements(request):
     houseadvertisements = HouseAdvertisement.objects.filter(user=request.user).order_by('-id')[:]
     context = {'houseadvertisements': houseadvertisements, "are_my_houseadvertisements": True}
     return render(request, 'housingapp/houseadvertisements.html', context)
+    
+def houseadvertisement_delete(request, houseadvertisement_id):
+    messages.success(request, 'House Advertisement Id - ' + str(houseadvertisement_id) + ' deleted successfully.')
+    HouseAdvertisement.objects.filter(id=houseadvertisement_id).delete()
+    return render(request, 'housingapp/messages.html', {})

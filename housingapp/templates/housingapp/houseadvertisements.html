@@ -8,7 +8,7 @@
         
         .left-manner-div {
           margin: 0 auto;
-          width: 60%;
+          width: 70%;
           text-align: left;
         }
         .table th{
@@ -53,9 +53,13 @@
                         <td>{{ houseadvertisement.floor_number }}</td>
                         <td>{{ houseadvertisement.city }}</td>
                         <td>
-                            <a href="{% url 'housingapp:houseadvertisement_existing' houseadvertisement.id %}">View</a>
-                            &nbsp;|&nbsp;
-                            <a href="{% url 'housingapp:houseadvertisement_existing' houseadvertisement.id %}">Edit</a>
+                            {% if are_my_houseadvertisements %}
+                                <a href="{% url 'housingapp:houseadvertisement_existing' houseadvertisement.id %}">Edit</a>
+                                &nbsp;|&nbsp;
+                                <a href="{% url 'housingapp:houseadvertisement_delete' houseadvertisement.id %}">Delete</a>
+                            {% else %}
+                                <a href="{% url 'housingapp:houseadvertisement_existing' houseadvertisement.id %}">View</a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
