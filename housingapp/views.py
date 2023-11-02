@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import HouseAdvertisement
+from .models import HouseAdvertisement, City
 from .forms import HouseAdvertisementForm
 from django.contrib import messages
 from django.http import Http404
@@ -48,13 +48,27 @@ def houseadvertisement_existing(request, houseadvertisement_id):
             
 # Get list of all houseadvertisements
 def houseadvertisements(request):
+    cities = City.objects.order_by('name')[:]
     houseadvertisements = HouseAdvertisement.objects.filter(advertisement_visibility=1).order_by('-id')[:]
-    context = {'houseadvertisements': houseadvertisements}
+    context = {
+        'houseadvertisements': houseadvertisements,
+        'cities': cities    
+    }
     return render(request, 'housingapp/houseadvertisements.html', context)
     
 def myhouseadvertisements(request):
-    houseadvertisements = HouseAdvertisement.objects.filter(user=request.user).order_by('-id')[:]
-    context = {'houseadvertisements': houseadvertisements, "are_my_houseadvertisements": True}
+    cities = City.objects.order_by('name')[:]
+    city_id=request.GET.get('city_id','0')
+    if city_id == '0':
+        houseadvertisements = HouseAdvertisement.objects.filter(user=request.user).order_by('-id')[:]
+    else:
+        houseadvertisements = HouseAdvertisement.objects.filter(user=request.user, city__pk=int(city_id)).order_by('-id')[:]
+        
+    context = {
+        'houseadvertisements': houseadvertisements, 
+        "are_my_houseadvertisements": True,
+        'cities': cities
+    }
     return render(request, 'housingapp/houseadvertisements.html', context)
     
 def houseadvertisement_delete(request, houseadvertisement_id):

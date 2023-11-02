@@ -34,8 +34,8 @@
             {% endfor %}
         </ul>
         {% endif %}
-        <div class="left-manner-div">
-            {% if houseadvertisements %}
+        <form action='' method='get'>
+            <div class="left-manner-div">
                 <table class="table">
                     <tr>
                         <th>Advertisement Id</th>
@@ -45,7 +45,23 @@
                         <th>City</th>
                         <th>Action</th>
                     </tr>
-                {% for houseadvertisement in houseadvertisements %}
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>
+                            <select onChange="form.submit();" name="city_id">
+                                <option value="0">---------</option>
+                                {% for city in cities %}
+                                    <option value="{{ city.id}}">{{ city.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    {% if houseadvertisements %}
+                    {% for houseadvertisement in houseadvertisements %}
                     <tr>
                         <td>{{ houseadvertisement.id }}</td>
                         <td>{{ houseadvertisement.number_of_bedroom }}</td>
@@ -62,11 +78,16 @@
                             {% endif %}
                         </td>
                     </tr>
-                {% endfor %}
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan='5'>
+                            There are no advertisements.
+                        </td>
+                    </tr>
+                    {% endif %}
                 </table>
-            {% else %}
-                <p>There are no advertisements.</p>
-            {% endif %}
-        </div>
+            </div>
+        </form>
     </div>
 {% endblock content %}
