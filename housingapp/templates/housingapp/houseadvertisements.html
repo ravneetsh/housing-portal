@@ -55,7 +55,7 @@
                                 <option value="0">---------</option>
                                 {% for city in cities %}
                                     <option value="{{ city.id}}" {% if city.id in city_id %} selected {% endif %}>
-                                        {{ city_id }}{{ city.id }}{{ city.name }}
+                                        {{ city.name }}
                                     </option>
                                 {% endfor %}
                             </select>

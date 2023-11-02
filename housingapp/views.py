@@ -49,10 +49,15 @@ def houseadvertisement_existing(request, houseadvertisement_id):
 # Get list of all houseadvertisements
 def houseadvertisements(request):
     cities = City.objects.order_by('name')[:]
-    houseadvertisements = HouseAdvertisement.objects.filter(advertisement_visibility=1).order_by('-id')[:]
+    city_id=request.GET.get('city_id','0')
+    if city_id == '0':
+        houseadvertisements = HouseAdvertisement.objects.filter(advertisement_visibility=1).order_by('-id')[:]
+    else:
+        houseadvertisements = HouseAdvertisement.objects.filter(advertisement_visibility=1, city__pk=int(city_id)).order_by('-id')[:]
     context = {
         'houseadvertisements': houseadvertisements,
-        'cities': cities    
+        'cities': cities,
+        'city_id': [int(city_id)]  
     }
     return render(request, 'housingapp/houseadvertisements.html', context)
     
@@ -68,7 +73,7 @@ def myhouseadvertisements(request):
         'houseadvertisements': houseadvertisements, 
         "are_my_houseadvertisements": True,
         'cities': cities,
-        'city_id': [city_id]
+        'city_id': [int(city_id)]
     }
     return render(request, 'housingapp/houseadvertisements.html', context)
     
