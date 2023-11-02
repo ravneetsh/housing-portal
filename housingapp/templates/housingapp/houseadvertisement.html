@@ -41,15 +41,6 @@
                 {% endfor %}
             </ul>
             {% endif %}
-            {% if form.errors %}
-               {% for field in form %}
-                   {% for error in field.errors %} 
-                      <div class="alert alert-danger">
-                           <strong>{{ field }} {{ error|escape }}</strong>
-                      </div>
-                   {% endfor %}
-               {% endfor %}
-            {% endif %}
             <form action='' method='post'>
                 {% csrf_token %}
                 {% if id %}
@@ -59,19 +50,39 @@
                     {% if not view %}
                         <tr>
                             <td>Number of Bedroom</td>
-                            <td>{{ form.number_of_bedroom }}</td>
+                            <td>
+                                {{ form.number_of_bedroom }}
+                                <span style="color:red">
+                                    {{ form.number_of_bedroom.errors }}
+                                </span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Number of Bathroom</td>
-                            <td>{{ form.number_of_bathroom }}</td>
+                            <td>
+                                {{ form.number_of_bathroom }}
+                                <span style="color:red">
+                                    {{ form.number_of_bathroom.errors }}
+                                </span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Floor Number</td>
-                            <td>{{ form.floor_number }}</td>
+                            <td>
+                                {{ form.floor_number }}
+                                <span style="color:red">
+                                    {{ form.floor_number.errors }}
+                                </span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Nearby Utilities/Landmarks</td>
-                            <td>{{ form.nearby_utilities_landmarks }}</td>
+                            <td>
+                                {{ form.nearby_utilities_landmarks }}
+                                <span style="color:red">
+                                    {{ form.nearby_utilities_landmarks.errors }}
+                                </span>
+                            </td>
                         </tr>
                         <tr>
                             <td>City</td>

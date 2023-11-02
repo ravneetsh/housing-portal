@@ -43,8 +43,8 @@ def houseadvertisement_existing(request, houseadvertisement_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'House Advertisement updated successfully')
-            context = {'form': form, 'id': houseadvertisement_id}
-            return render(request, 'housingapp/houseadvertisement.html', context)
+        context = {'form': form, 'id': houseadvertisement_id}
+        return render(request, 'housingapp/houseadvertisement.html', context)
             
 # Get list of all houseadvertisements
 def houseadvertisements(request):

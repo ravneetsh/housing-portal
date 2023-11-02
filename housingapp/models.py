@@ -15,8 +15,8 @@ class City(models.Model):
 # Create your models here.
 class HouseAdvertisement(models.Model):
     # each class variable represents a database i.e. table field in the model
-    number_of_bedroom = models.IntegerField()
-    number_of_bathroom = models.IntegerField()
+    number_of_bedroom = models.PositiveIntegerField()
+    number_of_bathroom = models.PositiveIntegerField()
     floor_number = models.IntegerField()
     nearby_utilities_landmarks = models.CharField(max_length=500)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
