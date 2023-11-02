@@ -67,7 +67,8 @@ def myhouseadvertisements(request):
     context = {
         'houseadvertisements': houseadvertisements, 
         "are_my_houseadvertisements": True,
-        'cities': cities
+        'cities': cities,
+        'city_id': [city_id]
     }
     return render(request, 'housingapp/houseadvertisements.html', context)
     
