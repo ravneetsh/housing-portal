@@ -10,8 +10,7 @@ phases:
   pre_build:
    commands:
      - python --version
-     - pylint $CODEBUILD_SRC_DIR/*.py
-     - pylint $CODEBUILD_SRC_DIR/demoproj/*.py
+     - pylint `find $CODEBUILD_SRC_DIR -iname "*.py" | grep -v '/migrations/'`
 artifacts:
   files:
     - '**/*'
