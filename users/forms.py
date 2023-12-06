@@ -1,11 +1,13 @@
+"""forms for User related actions"""
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core import validators
 
 class UserSignUpForm(UserCreationForm):
+    """new user signup form"""
     email = forms.EmailField(validators=[validators.validate_email])
-    
+
     min_length = 2
     max_length = 40
     message_lt_min = f"Should have at least {min_length} characters."
@@ -18,17 +20,19 @@ class UserSignUpForm(UserCreationForm):
         validators.MaxLengthValidator(max_length, message_ht_max),
         validators.RegexValidator(name_regex, name_message)
         ])
-        
+
     last_name = forms.CharField(validators=[
         validators.MinLengthValidator(min_length, message_lt_min),
         validators.MaxLengthValidator(max_length, message_ht_max),
         validators.RegexValidator(name_regex, name_message)
         ])
-        
+
     contact_no = forms.RegexField(regex=r'^\+?1?\d{9,15}$',
-                                    error_messages = {'invalid': "Contact number must be entered in the format: '+999999999'. Maximum 15 digits are allowed."})
-    
+                                    error_messages = {'invalid': "Contact number must be entered \
+                                    in the format: '+999999999'. Maximum 15 digits are allowed."})
+
     class Meta:
+        """meta class by convention"""
         model = User
         fields = ['username', 'first_name',
         'last_name', 'contact_no', 'email', 'password1', 'password2']

@@ -1,3 +1,4 @@
+'''url mapping for users related actions'''
 from django.urls import path
 from . import views
 
