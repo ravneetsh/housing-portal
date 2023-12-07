@@ -12,7 +12,7 @@ class City(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 # Create your models here.
 class HouseAdvertisement(models.Model):

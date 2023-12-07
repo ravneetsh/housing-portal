@@ -36,8 +36,8 @@ def houseadvertisement_existing(request, houseadvertisement_id):
         try:
             houseadvertisement = HouseAdvertisement.objects.get(pk=houseadvertisement_id) # pylint: disable=no-member
             form = HouseAdvertisementForm(instance=houseadvertisement)
-        except HouseAdvertisement.DoesNotExist:
-            raise Http404("House Advertisement does not exist")
+        except HouseAdvertisement.DoesNotExist as e: # pylint: disable=no-member
+            raise Http404("House Advertisement does not exist") from e
         context = {'form': form, 'id': houseadvertisement_id}
         return render(request, 'housingapp/houseadvertisement.html', context)
 
@@ -103,7 +103,7 @@ def houseadvertisement_view(request, houseadvertisement_id):
     try:
         houseadvertisement = HouseAdvertisement.objects.get(pk=houseadvertisement_id) # pylint: disable=no-member
         form = HouseAdvertisementForm(instance=houseadvertisement)
-    except HouseAdvertisement.DoesNotExist:
-        raise Http404("House Advertisement does not exist")
+    except HouseAdvertisement.DoesNotExist as e: # pylint: disable=no-member
+        raise Http404("House Advertisement does not exist") from e
     context = {'form': form, 'id': houseadvertisement_id, 'view': True}
     return render(request, 'housingapp/houseadvertisement.html', context)
