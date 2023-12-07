@@ -2,7 +2,7 @@
 from django.urls import path
 from . import views
 
-app_name = 'housingapp'
+app_name = 'housingapp' # pylint: disable=invalid-name
 urlpatterns = [
     path('', views.index, name='index'),
     path('houseadvertisements',

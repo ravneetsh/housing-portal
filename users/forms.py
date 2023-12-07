@@ -12,7 +12,7 @@ class UserSignUpForm(UserCreationForm):
     max_length = 40
     message_lt_min = f"Should have at least {min_length} characters."
     message_ht_max = f"Should have at most {max_length} characters."
-    name_regex='\A[a-zA-Z]+\Z'
+    name_regex='^[a-zA-Z]+$'
     name_message='The name accepts only letters!'
 
     first_name = forms.CharField(validators=[
@@ -31,7 +31,7 @@ class UserSignUpForm(UserCreationForm):
                                     error_messages = {'invalid': "Contact number must be entered \
                                     in the format: '+999999999'. Maximum 15 digits are allowed."})
 
-    class Meta:
+    class Meta: # pylint: disable=too-few-public-methods
         """meta class by convention"""
         model = User
         fields = ['username', 'first_name',

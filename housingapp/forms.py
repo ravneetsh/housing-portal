@@ -20,7 +20,7 @@ class HouseAdvertisementForm(ModelForm):
         self.fields['number_of_bedroom'].validators.append(validators.MinValueValidator(1))
         self.fields['floor_number'].validators.append(validators.MinValueValidator(-2))
 
-    class Meta:
+    class Meta: # pylint: disable=too-few-public-methods
         '''internal meta class'''
         model = HouseAdvertisement
         #fields = '__all__'

@@ -34,14 +34,14 @@ def houseadvertisement_existing(request, houseadvertisement_id):
     '''view method for getting form for an existing advertisement and then saving its update'''
     if request.method == 'GET':
         try:
-            houseadvertisement = HouseAdvertisement.objects.get(pk=houseadvertisement_id)
+            houseadvertisement = HouseAdvertisement.objects.get(pk=houseadvertisement_id) # pylint: disable=no-member
             form = HouseAdvertisementForm(instance=houseadvertisement)
         except HouseAdvertisement.DoesNotExist:
             raise Http404("House Advertisement does not exist")
         context = {'form': form, 'id': houseadvertisement_id}
         return render(request, 'housingapp/houseadvertisement.html', context)
 
-    result = HouseAdvertisement.objects.get(id=houseadvertisement_id)
+    result = HouseAdvertisement.objects.get(id=houseadvertisement_id) # pylint: disable=no-member
     form = HouseAdvertisementForm(request.POST, instance=result)
     if form.is_valid():
         form.save()
@@ -52,14 +52,14 @@ def houseadvertisement_existing(request, houseadvertisement_id):
 # Get list of all houseadvertisements
 def gethouseadvertisements(request):
     '''getting list of all advetisements'''
-    cities = City.objects.order_by('name')[:]
+    cities = City.objects.order_by('name')[:] # pylint: disable=no-member
     city_id=request.GET.get('city_id','0')
     if city_id == '0':
-        houseadvertisements = HouseAdvertisement.objects.filter(
+        houseadvertisements = HouseAdvertisement.objects.filter( # pylint: disable=no-member
                 advertisement_visibility=1
             ).order_by('-id')[:]
     else:
-        houseadvertisements = HouseAdvertisement.objects.filter(
+        houseadvertisements = HouseAdvertisement.objects.filter( # pylint: disable=no-member
                 advertisement_visibility=1, city__pk=int(city_id)
             ).order_by('-id')[:]
     context = {
@@ -71,15 +71,15 @@ def gethouseadvertisements(request):
 
 def myhouseadvertisements(request):
     '''getting list of my advertisements'''
-    cities = City.objects.order_by('name')[:]
+    cities = City.objects.order_by('name')[:] # pylint: disable=no-member
     city_id=request.GET.get('city_id','0')
     if city_id == '0':
         houseadvertisements = (
-            HouseAdvertisement.objects.filter(user=request.user)
+            HouseAdvertisement.objects.filter(user=request.user) # pylint: disable=no-member
             .order_by('-id')[:]
             )
     else:
-        houseadvertisements = HouseAdvertisement.objects.filter(
+        houseadvertisements = HouseAdvertisement.objects.filter( # pylint: disable=no-member
                 user=request.user, city__pk=int(city_id)
             ).order_by('-id')[:]
 
@@ -95,13 +95,13 @@ def houseadvertisement_delete(request, houseadvertisement_id):
     '''deleting an advertisement'''
     messages.success(request, 'House Advertisement Id - '
         + str(houseadvertisement_id) + ' deleted successfully.')
-    HouseAdvertisement.objects.filter(id=houseadvertisement_id).delete()
+    HouseAdvertisement.objects.filter(id=houseadvertisement_id).delete() # pylint: disable=no-member
     return render(request, 'housingapp/messages.html', {})
 
 def houseadvertisement_view(request, houseadvertisement_id):
     '''getting data of an advertisement for view'''
     try:
-        houseadvertisement = HouseAdvertisement.objects.get(pk=houseadvertisement_id)
+        houseadvertisement = HouseAdvertisement.objects.get(pk=houseadvertisement_id) # pylint: disable=no-member
         form = HouseAdvertisementForm(instance=houseadvertisement)
     except HouseAdvertisement.DoesNotExist:
         raise Http404("House Advertisement does not exist")

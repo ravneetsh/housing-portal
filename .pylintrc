@@ -82,6 +82,7 @@ limit-inference-results=100
 # List of plugins (as comma separated values of python module names) to load,
 # usually to register additional checkers.
 load-plugins=
+#pylint_django22
 
 # Pickle collected data for later comparisons.
 persistent=yes
@@ -428,7 +429,8 @@ disable=raw-checker-failed,
         suppressed-message,
         useless-suppression,
         deprecated-pragma,
-        use-symbolic-message-instead
+        use-symbolic-message-instead,
+        R0901
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
@@ -631,4 +633,3 @@ init-import=no
 # builtins.
 redefining-builtins-modules=six.moves,past.builtins,future.builtins,builtins,io
 
-#plugins=pylint_django
