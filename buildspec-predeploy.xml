@@ -1,0 +1,16 @@
+version: 0.2
+env:
+  secrets-manager:
+    django_secret_key: 23113961-cdos-djangosecret:django_secret_key
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+  pre_build:
+    commands:
+      - pwd
+      - echo $django_secret_key
+  build:
+    commands:
+      - sed "s/SECRET_KEY=/SECRET_KEY=$django_secret_key/g" housingportal/settings.py
+      - if [ $? -ne 0 ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
