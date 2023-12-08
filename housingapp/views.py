@@ -95,7 +95,7 @@ def houseadvertisement_delete(request, houseadvertisement_id):
     '''deleting an advertisement'''
     messages.success(request, 'House Advertisement Id - '
         + str(houseadvertisement_id) + ' deleted successfully.')
-    HouseAdvertisement.objects.filter(id=houseadvertisement_id).delete() # pylint: disable=no-member
+    HouseAdvertisement.objects.filter(id=houseadvertisement_id).delete() 
     return render(request, 'housingapp/messages.html', {})
 
 def houseadvertisement_view(request, houseadvertisement_id):
