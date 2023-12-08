@@ -1,10 +1,10 @@
 version: 0.2
 env:
   secrets-manager:
-    LOGIN: x23113961-cdos-sonarcube:sonartoken
     HOST: x23113961-cdos-sonarcube:HOST
     Organization: x23113961-cdos-sonarcube:Organization
     Project: x23113961-cdos-sonarcube:Project
+    LOGIN: x23113961-cdos-sonarcube:sonartoken
 phases:
   install:
     runtime-versions:
