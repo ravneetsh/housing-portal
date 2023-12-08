@@ -12,5 +12,5 @@ phases:
       - echo $django_secret_key
   build:
     commands:
-      - sed "s/SECRET_KEY=/SECRET_KEY=$django_secret_key/g" housingportal/settings.py
+      - sed "s/#SECRET_KEY=/SECRET_KEY=$django_secret_key/g" housingportal/settings.py
       - if [ $? -ne 0 ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
