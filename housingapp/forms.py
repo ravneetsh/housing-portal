@@ -23,7 +23,6 @@ class HouseAdvertisementForm(ModelForm):
     class Meta: # pylint: disable=too-few-public-methods
         '''internal meta class'''
         model = HouseAdvertisement
-        #fields = '__all__'
         exclude = ["user"]
 
         widgets = {

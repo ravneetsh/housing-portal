@@ -6,6 +6,8 @@ from django.http import Http404
 from .models import HouseAdvertisement, City
 from .forms import HouseAdvertisementForm
 
+houseadvertisement_template = 'housingapp/houseadvertisement.html'
+
 # Create your views here.
 @require_GET
 def index(request):
@@ -31,7 +33,7 @@ def newhouseadvertisement(request):
         print('House AdvertisementForm has errors')
 
     context = {"form": form}
-    return render(request, 'housingapp/houseadvertisement.html', context)
+    return render(request, houseadvertisement_template, context)
 
 @require_http_methods(["GET", "POST"]) #NOSONAR
 def houseadvertisement_existing(request, houseadvertisement_id):
@@ -43,7 +45,7 @@ def houseadvertisement_existing(request, houseadvertisement_id):
         except HouseAdvertisement.DoesNotExist as e: # pylint: disable=no-member
             raise Http404("House Advertisement does not exist") from e
         context = {'form': form, 'id': houseadvertisement_id}
-        return render(request, 'housingapp/houseadvertisement.html', context)
+        return render(request, houseadvertisement_template, context)
 
     result = HouseAdvertisement.objects.get(id=houseadvertisement_id) # pylint: disable=no-member
     form = HouseAdvertisementForm(request.POST, instance=result)
@@ -51,7 +53,7 @@ def houseadvertisement_existing(request, houseadvertisement_id):
         form.save()
         messages.success(request, 'House Advertisement updated successfully')
     context = {'form': form, 'id': houseadvertisement_id}
-    return render(request, 'housingapp/houseadvertisement.html', context)
+    return render(request, houseadvertisement_template, context)
 
 # Get list of all houseadvertisements
 @require_GET
@@ -114,4 +116,4 @@ def houseadvertisement_view(request, houseadvertisement_id):
     except HouseAdvertisement.DoesNotExist as e: # pylint: disable=no-member
         raise Http404("House Advertisement does not exist") from e
     context = {'form': form, 'id': houseadvertisement_id, 'view': True}
-    return render(request, 'housingapp/houseadvertisement.html', context)
+    return render(request, houseadvertisement_template, context)
