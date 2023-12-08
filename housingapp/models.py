@@ -26,7 +26,7 @@ class HouseAdvertisement(models.Model):
     city = models.ForeignKey(City,on_delete=models.CASCADE)
     address = models.CharField(max_length=200)
     advertisement_visibility = models.IntegerField(choices=advertisement_visibility)
-    contact_no = models.TextField(max_length=20, blank=True)
+    contact_no = models.CharField(max_length=20)
 
     def __str__(self):
         return f"{self.number_of_bedroom} Bedroom, \
