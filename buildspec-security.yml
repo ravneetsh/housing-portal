@@ -12,6 +12,8 @@ phases:
       - unzip ../sonar-scanner-cli-5.0.1.3006.zip -d ../
       - pwd
       - ls -l
+      - ls -l ../
+      - ls -l sonar-scanner-cli-5.0.1.3006/bin/
       - export PATH=$PATH:../sonar-scanner-cli-5.0.1.3006/bin/
   build:
     commands:
