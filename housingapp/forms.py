@@ -24,7 +24,7 @@ class HouseAdvertisementForm(ModelForm):
         '''internal meta class'''
         model = HouseAdvertisement
         exclude = ["user"]
-        fields = ['number_of_bedroom', 'number_of_bathroom', 'floor_number', 
+        fields = ['number_of_bedroom', 'number_of_bathroom', 'floor_number',
                     'nearby_utilities_landmarks', 'user', 'city', 'advertisement_visibility']
 
         widgets = {
