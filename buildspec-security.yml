@@ -7,19 +7,14 @@ phases:
     commands:
       - apt-get update
       - apt-get install -y jq
-      #- wget https://downloads.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
-      #- tar xzf apache-maven-3.9.6-bin.tar.gz
-      #- ln -s apache-maven-3.9.6 maven
-      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
-      - unzip ./sonar-scanner-cli-3.3.0.1492-linux.zip -d ../
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006.zip
+      - mv ./sonar-scanner-cli-5.0.1.3006.zip ../
+      - unzip ../sonar-scanner-cli-5.0.1.3006.zip -d ../
       - pwd
       - ls -l
-      - export PATH=$PATH:../sonar-scanner-3.3.0.1492-linux/bin/
-      - sed -i 's/use_embedded_jre=true/use_embedded_jre=false/' ../sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner
+      - export PATH=$PATH:../sonar-scanner-cli-5.0.1.3006/bin/
   build:
     commands:
-      #- mvn test     
-      #- mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
       - echo 1234
       - sonar-scanner -Dsonar.organization=ravneetsh -Dsonar.projectKey=housing-portal -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.token=d1f802aa42beba6e13fca6ec1d0fe3d4b0751c3d -Dsonar.sources=.
       - sleep 5
