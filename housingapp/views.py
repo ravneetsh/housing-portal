@@ -13,7 +13,7 @@ def index(request):
     context = {}
     return render(request, 'housingapp/index.html', context)
 
-@require_http_methods(["GET", "POST"])
+@require_http_methods(["GET", "POST"]) #NOSONAR 
 def newhouseadvertisement(request):
     '''view method for getting a black form and a filled one saved'''
     # Get entry form , create it, get an existing houseadvertisement, update it
@@ -33,6 +33,7 @@ def newhouseadvertisement(request):
     context = {"form": form}
     return render(request, 'housingapp/houseadvertisement.html', context)
 
+@require_http_methods(["GET", "POST"]) #NOSONAR 
 def houseadvertisement_existing(request, houseadvertisement_id):
     '''view method for getting form for an existing advertisement and then saving its update'''
     if request.method == 'GET':
@@ -96,6 +97,7 @@ def myhouseadvertisements(request):
     }
     return render(request, 'housingapp/houseadvertisements.html', context)
 
+@require_GET
 def houseadvertisement_delete(request, houseadvertisement_id):
     '''deleting an advertisement'''
     messages.success(request, 'House Advertisement Id - '

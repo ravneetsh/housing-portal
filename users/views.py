@@ -1,9 +1,11 @@
 '''user related views'''
+from django.views.decorators.http import require_GET, require_http_methods
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserSignUpForm
 
 # Create your views here.
+@require_http_methods(["GET", "POST"]) #NOSONAR 
 def sign_up(request):
     '''view for signup of user'''
     if request.method == "POST":
