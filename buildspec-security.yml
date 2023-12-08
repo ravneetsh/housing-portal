@@ -15,6 +15,7 @@ phases:
       - pwd
       - ls -l
       - export PATH=$PATH:../sonar-scanner-3.3.0.1492-linux/bin/
+      - sed -i 's/use_embedded_jre=false/use_embedded_jre=true/' ../sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner
   build:
     commands:
       #- mvn test     
