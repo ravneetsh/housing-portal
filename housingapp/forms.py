@@ -21,6 +21,7 @@ class HouseAdvertisementForm(ModelForm):
             validators.MinLengthValidator(min_length, message_lt_min)
         )
         self.fields['number_of_bedroom'].validators.append(validators.MinValueValidator(1))
+        self.fields['number_of_bathroom'].validators.append(validators.MinValueValidator(1))
         self.fields['floor_number'].validators.append(validators.MinValueValidator(-2))
         self.fields['contact_no'].validators.append(validators.RegexValidator(
                 regex=r'^\+?1?\d{9,15}$',
