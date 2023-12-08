@@ -1,4 +1,5 @@
 '''views defined for advertisements'''
+from django.views.decorators.http import require_GET
 from django.shortcuts import render
 from django.contrib import messages
 from django.http import Http404
@@ -6,6 +7,7 @@ from .models import HouseAdvertisement, City
 from .forms import HouseAdvertisementForm
 
 # Create your views here.
+@require_GET
 def index(request):
     '''home page for application'''
     context = {}
@@ -50,6 +52,7 @@ def houseadvertisement_existing(request, houseadvertisement_id):
     return render(request, 'housingapp/houseadvertisement.html', context)
 
 # Get list of all houseadvertisements
+@require_GET
 def gethouseadvertisements(request):
     '''getting list of all advetisements'''
     cities = City.objects.order_by('name')[:] # pylint: disable=no-member
@@ -69,6 +72,7 @@ def gethouseadvertisements(request):
     }
     return render(request, 'housingapp/houseadvertisements.html', context)
 
+@require_GET
 def myhouseadvertisements(request):
     '''getting list of my advertisements'''
     cities = City.objects.order_by('name')[:] # pylint: disable=no-member
@@ -98,6 +102,7 @@ def houseadvertisement_delete(request, houseadvertisement_id):
     HouseAdvertisement.objects.filter(id=houseadvertisement_id).delete() # pylint: disable=no-member
     return render(request, 'housingapp/messages.html', {})
 
+@require_GET
 def houseadvertisement_view(request, houseadvertisement_id):
     '''getting data of an advertisement for view'''
     try:
