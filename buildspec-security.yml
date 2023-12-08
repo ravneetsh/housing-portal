@@ -30,7 +30,6 @@ phases:
       - echo $HOST
       - echo $LOGIN
       - echo 1234
-      #- sonar-scanner -Dsonar.organization=$Organization -Dsonar.projectKey=$Project -Dsonar.host.url=$HOST -Dsonar.token=$LOGIN -Dsonar.sources=.
       - sonar-scanner -Dsonar.organization=ravneetsh -Dsonar.projectKey=$Project -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.token=d1f802aa42beba6e13fca6ec1d0fe3d4b0751c3d -Dsonar.sources=.
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
