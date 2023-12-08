@@ -8,7 +8,7 @@ env:
 phases:
   install:
     runtime-versions:
-      java: corretto8
+      java: corretto11
   pre_build:
     commands:
       - apt-get update
@@ -22,7 +22,8 @@ phases:
   build:
     commands:
       #- mvn test     
-      - mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
+      #- mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
+      - sonar-scanner -Dsonar.organization=$Organization -Dsonar.projectKey=$Project -Dsonar.host.url=$HOST -Dsonar.token=$LOGIN
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
       - cat result.json
