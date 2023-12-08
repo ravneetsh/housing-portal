@@ -23,9 +23,8 @@ class HouseAdvertisementForm(ModelForm):
     class Meta: # pylint: disable=too-few-public-methods
         '''internal meta class'''
         model = HouseAdvertisement
-        exclude = ["user"]
         fields = ['number_of_bedroom', 'number_of_bathroom', 'floor_number',
-                    'nearby_utilities_landmarks', 'user', 'city', 'advertisement_visibility']
+                    'nearby_utilities_landmarks', 'city', 'advertisement_visibility']
 
         widgets = {
             'nearby_utilities_landmarks': forms.Textarea()
