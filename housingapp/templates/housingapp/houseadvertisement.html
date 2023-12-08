@@ -88,6 +88,24 @@
                             <td>City</td>
                             <td>{{ form.city }}</td>
                         </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>
+                                {{ form.address }}
+                                <span style="color:red">
+                                    {{ form.address.errors }}
+                                </span>
+                            </td>
+                        </tr>   
+                        <tr>
+                            <td>Contact Number</td>
+                            <td>
+                                {{ form.contact_no }}
+                                <span style="color:red">
+                                    {{ form.contact_no.errors }}
+                                </span>
+                            </td>
+                        </tr>                           
                     {% else %}
                         <tr>
                             <td>Number of Bedroom</td>
@@ -109,6 +127,14 @@
                             <td>City</td>
                             <td class="frooze">{{ form.city }}</td>
                         </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>{{ form.address.value }}</td>
+                        </tr>
+                        <tr>
+                            <td>Contact Number</td>
+                            <td>{{ form.contact_no.value }}</td>
+                        </tr>                        
                     {% endif %}
                     
                     {% if not view %}
