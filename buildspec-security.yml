@@ -25,6 +25,10 @@ phases:
     commands:
       #- mvn test     
       #- mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
+      - echo $Organization
+      - echo $Project
+      - echo $HOST
+      - echo $LOGIN
       - sonar-scanner -Dsonar.organization=$Organization -Dsonar.projectKey=$Project -Dsonar.host.url=$HOST -Dsonar.token=$LOGIN -Dsonar.sources=.
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
