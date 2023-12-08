@@ -26,7 +26,6 @@ phases:
       - export PATH=$PATH:../sonar-scanner-5.0.1.3006/bin/
   build:
     commands:
-      - echo 1234
       - sonar-scanner -Dsonar.organization=$Organization -Dsonar.projectKey=$Project -Dsonar.host.url=$HOST -Dsonar.token=$LOGIN -Dsonar.sources=.
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
