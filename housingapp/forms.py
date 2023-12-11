@@ -20,6 +20,8 @@ class HouseAdvertisementForm(ModelForm):
         self.fields['address'].validators.append(
             validators.MinLengthValidator(min_length, message_lt_min)
         )
+        self.fields['rent_per_month'].validators.append(validators.MinValueValidator(1))
+        self.fields['rent_per_month'].validators.append(validators.MaxValueValidator(2147483647))
         self.fields['number_of_bedroom'].validators.append(validators.MinValueValidator(1))
         self.fields['number_of_bathroom'].validators.append(validators.MinValueValidator(1))
         self.fields['floor_number'].validators.append(validators.MinValueValidator(-2))
@@ -32,7 +34,7 @@ class HouseAdvertisementForm(ModelForm):
     class Meta: # pylint: disable=too-few-public-methods
         '''internal meta class'''
         model = HouseAdvertisement
-        fields = ['number_of_bedroom', 'number_of_bathroom', 'floor_number',
+        fields = ['rent_per_month', 'number_of_bedroom', 'number_of_bathroom', 'floor_number',
                     'nearby_utilities_landmarks', 'city', 'address',
                     'advertisement_visibility', 'contact_no']
 

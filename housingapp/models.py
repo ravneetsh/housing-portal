@@ -18,6 +18,7 @@ class City(models.Model):
 class HouseAdvertisement(models.Model):
     """Defining model class for advertisement"""
     # each class variable represents a database i.e. table field in the model
+    rent_per_month = models.PositiveIntegerField()
     number_of_bedroom = models.PositiveIntegerField()
     number_of_bathroom = models.PositiveIntegerField()
     floor_number = models.IntegerField()

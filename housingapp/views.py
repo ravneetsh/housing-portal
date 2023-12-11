@@ -17,7 +17,7 @@ def index(request):
 
 @require_http_methods(["GET", "POST"]) #NOSONAR
 def newhouseadvertisement(request):
-    '''view method for getting a black form and a filled one saved'''
+    '''view method for getting a blank form and a filled one saved'''
     # Get entry form , create it, get an existing houseadvertisement, update it
     if request.method == 'GET':
         form = HouseAdvertisementForm()
@@ -28,7 +28,7 @@ def newhouseadvertisement(request):
             instance.user = request.user
             instance.save()
             messages.success(request, 'House Advertisement saved successfully.\
-                House Advertisement Id is ' + str(instance.id))
+            House Advertisement Id is ' + str(instance.id))
             return render(request, 'users/messages.html',{})
         print('House AdvertisementForm has errors')
 
